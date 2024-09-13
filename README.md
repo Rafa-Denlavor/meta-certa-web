@@ -7,5 +7,6 @@
 - [ ] Criar uma tela inicial para apresentar a proposta do site
 - [ ] Melhorar as descrições das imagens
 - [ ] Identificar locais em que tooltips são úteis
-- Disponibilizar a ação de deletar uma ou todas as metas;
-- Disponibilizar a ação de editar uma meta; 
+- [ ] Disponibilizar a ação de deletar uma ou todas as metas;
+- [ ] Disponibilizar a ação de editar uma meta;
+- [ ] Adicionar quantas vezes ainda falta para completar a meta 

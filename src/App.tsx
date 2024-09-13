@@ -6,7 +6,10 @@ import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
 
 export function App() {
-  const { data, isLoading, error } = useSWR("/summary", (url) => {
+  const { data, isLoading, error } = useSWR("/summary", {
+    revalidateOnFocus: false,
+    shouldRetryOnError : false,
+  }, (url) => {
     return getSummary(url);
   });
 
@@ -20,11 +23,8 @@ export function App() {
 
   return (
     <Dialog>
-      {data ? (
-        <Summary summaryData={data} isLoading={isLoading} hasError={error} />
-      ) : (
-        <EmptyGoals />
-      )}
+     {error || !data && <EmptyGoals />}
+     {(!error && data) && <Summary summaryData={data} isLoading={isLoading} hasError={error} />}
     </Dialog>
   );
 }
