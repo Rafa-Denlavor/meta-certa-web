@@ -9,6 +9,7 @@ import dayjs from 'dayjs';
 import ptBR from 'dayjs/locale/pt-BR'
 import { PendingGoals } from './pending-goals';
 import { CreateGoal } from './create-goal'
+import 'dayjs/locale/pt-BR';
 
 type TSummaryProps = {
   summaryData: TSummary;
