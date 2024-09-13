@@ -27,7 +27,7 @@ export function PendingGoals() {
 
   return (
     <div className="flex gap-3 flex-wrap">
-    {data.map(({ id, title, desiredWeeklyFrequency, completionCount }) => {
+    {data && data.map(({ id, title, desiredWeeklyFrequency, completionCount }) => {
       return (
         <OutlineButton key={id} disabled={completionCount >= desiredWeeklyFrequency} onClick={() => handleCompleteGoal(id)}>
          <Plus className="size-4 text-zinc-600" />

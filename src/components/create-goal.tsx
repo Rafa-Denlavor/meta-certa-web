@@ -21,7 +21,7 @@ import { createGoal } from '../service/create-goal';
 
 const createGoalSchema = z.object({
   title: z.string().min(3, 'Informe a atividade que deseja realizar'),
-  description: z.string().max(300).optional().default(null),
+  description: z.string().max(300).optional().default(''),
   desiredWeeklyFrequency: z.coerce.number().min(1).max(7),
 })
 
@@ -80,7 +80,7 @@ export function CreateGoal() {
               <Controller
                 control={control}
                 name="desiredWeeklyFrequency"
-                defaultValue="3"
+                defaultValue={3}
                 render={({ field }) => {
                   return (
                     <RadioGroup onValueChange={field.onChange} value={String(field.value)}>
