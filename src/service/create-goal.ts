@@ -1,5 +1,5 @@
 export async function createGoal(goalData : any) {
-   await fetch('http://localhost:3333/goals', {
+   await fetch('https://goals-back.vercel.app/goals', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
