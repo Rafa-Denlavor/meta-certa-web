@@ -18,6 +18,8 @@ import { useForm, Controller } from 'react-hook-form';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createGoal } from '../service/create-goal';
+import { mutate } from 'swr';
+import { toast } from 'react-hot-toast';
 
 const createGoalSchema = z.object({
   title: z.string().min(3, 'Informe a atividade que deseja realizar'),
@@ -33,7 +35,12 @@ export function CreateGoal() {
   });
 
   async function handleCreateGoal(data: CreateGoalForm) {
-    await createGoal(data);
+    await createGoal(data).then(() => {
+      toast.success('Meta criada com sucesso.');
+      mutate('/summary');
+    }).catch(() => {
+      toast.error('Não foi possível criar sua meta.');
+    });
 
     reset();
   }
@@ -74,6 +81,9 @@ export function CreateGoal() {
                 placeholder="Correr 2km na esteira, andar 10km na esteira, etc..."
                 {...register('description')}>
               </Textarea>
+              {formState.errors.description && (
+                <p className="text-red-400 text-s">Limite de 300 caracteres</p>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="title">Quantas vezes na semana?</Label>

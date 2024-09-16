@@ -9,5 +9,5 @@ export type TSummary = {
       description?: string;
       completedAt: string;
     }[]
-  >;
+  > | null;
 };

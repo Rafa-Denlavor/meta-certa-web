@@ -4,14 +4,16 @@ import { Summary } from "./components/summary";
 import { Dialog } from "./components/ui/dialog";
 import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
+import { Toaster } from 'react-hot-toast';
 
 export function App() {
-  const { data, isLoading, error } = useSWR("/summary", {
-    revalidateOnFocus: false,
-    shouldRetryOnError : false,
-  }, (url) => {
+  const { data, isLoading, error } = useSWR("/summary", (url) => {
     return getSummary(url);
+  }, {
+    revalidateOnFocus: false,
+    shouldRetryOnError: false
   });
+  const summary = data ? data : { total: 0, goalsPerDay: null, completed: 0};
 
   if (isLoading) {
     return (
@@ -23,8 +25,9 @@ export function App() {
 
   return (
     <Dialog>
-     {error || !data && <EmptyGoals />}
-     {(!error && data) && <Summary summaryData={data} isLoading={isLoading} hasError={error} />}
+     <Toaster position="bottom-left" />
+     {(error || !summary.total) && <EmptyGoals />}
+     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
     </Dialog>
   );
 }

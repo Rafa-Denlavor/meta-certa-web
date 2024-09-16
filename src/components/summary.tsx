@@ -1,4 +1,4 @@
-import { CheckCircle2, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { DialogTrigger } from "./ui/dialog";
 import { Progress, ProgressIndicator } from "./ui/progress-bar";
@@ -8,7 +8,8 @@ import { Loader } from "./ui/loader";
 import dayjs from 'dayjs';
 import ptBR from 'dayjs/locale/pt-BR'
 import { PendingGoals } from './pending-goals';
-import { CreateGoal } from './create-goal'
+import { CreateGoal } from './create-goal';
+import { WeekGoals } from './week-goals';
 import 'dayjs/locale/pt-BR';
 
 type TSummaryProps = {
@@ -50,7 +51,7 @@ export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
 
       <div className="flex flex-col gap-3">
         <Progress value={summaryData?.completed} max={summaryData?.total}>
-          <ProgressIndicator style={{ width: `${completedPorcentage}` }} />
+          <ProgressIndicator style={{ width: `${completedPorcentage}%` }} />
         </Progress>
         <div className="flex items-center justify-between text-zinc-400">
           <span>
@@ -71,35 +72,7 @@ export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
         <h2 className="text-xl font-medium">Sua semana</h2>
         {isLoading && <Loader />}
         {hasError && <span>Poxa, um erro ocorreu...</span>}
-        {(!hasError && !isLoading && summaryData) &&
-          Object.entries(summaryData?.goalsPerDay).map(([date, goals]) => {
-            const weekDay = dayjs(date).format('dddd');
-            const formattedDate =  dayjs(date).format('D[ de ]MMMM');
-
-            return (
-              <div key={date} className="flex flex-col gap-4">
-                <h3 className="font-medium capitalize">
-                  {weekDay}{' '}<span className="text-zinc-400 tex-xs lowercase">({formattedDate})</span>
-                </h3>
-                <ul className="flex flex-col gap-3">
-                  {goals.map(({ id, title, completedAt }) => {
-                    const time = dayjs(completedAt).format('HH:mm');
-
-                    return (
-                      <li key={id} className="flex items-center gap-2">
-                        <CheckCircle2 className="size-4 text-pink-500" />
-                        <span className="text-sm text-zinc-400">
-                          Você completou "
-                          <span className="text-zinc-100">{title}</span>" ás{" "}
-                          <span className="text-zinc-100">{time}</span>
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            );
-          })}
+        {summaryData.goalsPerDay ? <WeekGoals goalsPerDay={summaryData.goalsPerDay} /> : <p>Nenhuma meta concluída.</p>}
       </div>
     </section>
   );
