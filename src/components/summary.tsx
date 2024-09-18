@@ -6,7 +6,7 @@ import { Separator } from "./ui/separator";
 import type { TSummary } from "../types/TSummary";
 import { Loader } from "./ui/loader";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-br'
+// import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals';
 import { CreateGoal } from './create-goal';
 import { WeekGoals } from './week-goals';
@@ -17,7 +17,7 @@ type TSummaryProps = {
   hasError?: boolean;
 };
 
-dayjs.locale(ptBR);
+// dayjs.locale(ptBR);
 
 export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
   const completedPorcentage =

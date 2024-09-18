@@ -5,9 +5,9 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-br'
+// import ptBR from 'dayjs/locale/pt-br'
 
-dayjs.locale(ptBR);
+// dayjs.locale(ptBR);
 
 export function DetailsGoal({goals, goalId} : any) {
   const currentGoal = goals.filter(({id} : { id: string }) => id === goalId);
