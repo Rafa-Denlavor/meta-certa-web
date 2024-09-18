@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
    rollupOptions: {
-     external: ['dayjs/locale/pt-BR']
+     external: ['dayjs/locale/pt-br']
    }
  }
 })

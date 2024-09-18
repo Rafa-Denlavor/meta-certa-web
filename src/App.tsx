@@ -10,8 +10,10 @@ import { CookiesProvider, useCookies } from 'react-cookie'
 export function App() {
   const [cookies, setCookie] = useCookies(['user'])
 
-  const { data, isLoading, error } = useSWR("/summary", (url) => {
-    return getSummary(url);
+  const { data, isLoading, error } = useSWR("/summary", async (url) => {
+    const result = await getSummary(url);
+
+    return result;
   }, {
     revalidateOnFocus: false,
     shouldRetryOnError: false

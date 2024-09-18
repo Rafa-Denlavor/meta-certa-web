@@ -1,9 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
 import { DialogTrigger, Dialog } from "./ui/dialog";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-BR';
-// import { DetailsGoal } from './details-goal'
-import 'dayjs/locale/pt-BR';
+// import ptBR from 'dayjs/locale/pt-br';
 import type { TGoal } from '../types/TGoal';
 import { deleteGoalCompletion } from '../service/delete-goal-completion';
 import { toast } from 'react-hot-toast';
@@ -13,7 +11,7 @@ type TWeekGoals = {
   goalsPerDay: any;
 }
 
-dayjs.locale(ptBR);
+// dayjs.locale(ptBR);
 
 async function handleGoalCompletionRemove(completionId : string) {
    await deleteGoalCompletion(completionId).then(() => {
