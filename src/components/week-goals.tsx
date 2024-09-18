@@ -3,7 +3,7 @@ import { DialogTrigger, Dialog } from "./ui/dialog";
 import dayjs from 'dayjs';
 import ptBR from 'dayjs/locale/pt-BR';
 // import { DetailsGoal } from './details-goal'
-// import 'dayjs/locale/pt-BR';
+import 'dayjs/locale/pt-BR';
 import type { TGoal } from '../types/TGoal';
 
 type TWeekGoals = {
