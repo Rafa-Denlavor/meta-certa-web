@@ -34,7 +34,7 @@ export function App() {
     <Dialog>
      <Toaster position="bottom-left" />
      {(error || !summary.total) && <EmptyGoals />}
-     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+     // {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
     </Dialog>
   );
 }
