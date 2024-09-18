@@ -24,10 +24,12 @@ export function App() {
   }
 
   return (
-    <Dialog>
-     <Toaster position="bottom-left" />
-     {(error || !summary.total) && <EmptyGoals />}
-     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-    </Dialog>
+    <div>
+      <Dialog>
+       <Toaster position="bottom-left" />
+       {(error || !summary.total) && <EmptyGoals />}
+       {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+      </Dialog>
+    </div>
   );
 }
