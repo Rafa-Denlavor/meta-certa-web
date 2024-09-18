@@ -14,13 +14,15 @@ export function App() {
     async function teste() {
       const result = await getSummary("/summary");
 
-      console.log(result);
+      console.log('useEffect', result);
     }
 
     teste();
   }, [])
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
+
+      console.log('swr', result);
 
     return result;
   }, {
