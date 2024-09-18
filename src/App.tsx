@@ -7,8 +7,10 @@ import { Logo } from "./components/ui/logo";
 import { Toaster } from 'react-hot-toast';
 
 export function App() {
-  const { data, isLoading, error } = useSWR("/summary", (url) => {
-    return getSummary(url);
+  const { data, isLoading, error } = useSWR("/summary", async (url) => {
+    const result = await getSummary(url);
+
+    return result;
   }, {
     revalidateOnFocus: false,
     shouldRetryOnError: false
@@ -24,6 +26,14 @@ export function App() {
   }
 
   return (
-    <h1>sdsdssdsd</h1>
+    <div>
+      <h1>Será que vai funcionar?</h1>
+      <Dialog>
+       <h1>Será que vai funcionar? - 2</h1>
+       <Toaster position="bottom-left" />
+       {(error || !summary.total) && <EmptyGoals />}
+       {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+      </Dialog>
+    </div>
   );
 }
