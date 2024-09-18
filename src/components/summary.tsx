@@ -67,9 +67,17 @@ export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
         </div>
       </div>
       <Separator />
-      <PendingGoals />
       <div className="flex flex-col gap-6">
-        <h2 className="text-xl font-medium">Sua semana</h2>
+        <header>
+          <h2 className="text-xl font-medium pb-2">Suas metas</h2>
+          <p className="text-zinc-400">Aqui você encontra todas as metas que definiu para esta semana com o indicador de quantos dias faltam para completá-la.</p>
+        </header>
+        <PendingGoals />
+        <Separator />
+      </div>
+      <div className="flex flex-col gap-6">
+        <h2 className="text-xl font-medium">Histórico</h2>
+        <p className="text-zinc-400">A linha do tempo completa de suas metas concluídas. Clique em alguma meta para ver mais detalhes.</p>
         {isLoading && <Loader />}
         {hasError && <span>Poxa, um erro ocorreu...</span>}
         {summaryData.goalsPerDay ? <WeekGoals goalsPerDay={summaryData.goalsPerDay} /> : <p>Nenhuma meta concluída.</p>}

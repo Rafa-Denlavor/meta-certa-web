@@ -5,8 +5,12 @@ import { Dialog } from "./components/ui/dialog";
 import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
 import { Toaster } from 'react-hot-toast';
+import { CookiesProvider } from 'react-cookie'
+// import { Header } from './components/ui/header';
 
 export function App() {
+  // const [cookies, setCookie] = useCookies(['user'])
+
   const { data, isLoading, error } = useSWR("/summary", (url) => {
     return getSummary(url);
   }, {
@@ -24,10 +28,15 @@ export function App() {
   }
 
   return (
-    <Dialog>
-     <Toaster position="bottom-left" />
-     {(error || !summary.total) && <EmptyGoals />}
-     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-    </Dialog>
+    <CookiesProvider>
+    {/*{cookies.user ?*/}
+      <div>
+        <Dialog>
+         <Toaster position="bottom-left" />
+         {(error || !summary.total) && <EmptyGoals />}
+         {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+        </Dialog>
+      </div>
+    </CookiesProvider>
   );
 }
