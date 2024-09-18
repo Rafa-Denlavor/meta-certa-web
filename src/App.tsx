@@ -28,12 +28,10 @@ export function App() {
   return (
     <div>
       <h1>Será que vai funcionar?</h1>
-      <Dialog>
        <h1>Será que vai funcionar? - 2</h1>
        <Toaster position="bottom-left" />
        {(error || !summary.total) && <EmptyGoals />}
        {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-      </Dialog>
     </div>
   );
 }
