@@ -4,8 +4,8 @@ export async function deleteGoalCompletion(completionId : string) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: {
+    body: JSON.stringify({
       id: completionId
-    }
+    })
   })
 }

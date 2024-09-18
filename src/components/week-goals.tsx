@@ -7,6 +7,7 @@ import 'dayjs/locale/pt-BR';
 import type { TGoal } from '../types/TGoal';
 import { deleteGoalCompletion } from '../service/delete-goal-completion';
 import { toast } from 'react-hot-toast';
+import { mutate } from 'swr';
 
 type TWeekGoals = {
   goalsPerDay: any;
@@ -18,7 +19,7 @@ async function handleGoalCompletionRemove(completionId : string) {
    await deleteGoalCompletion(completionId).then(() => {
      toast.success('Meta completada deletada com sucesso.');
      mutate('/summary');
-     mutate('/pending-goals')
+     mutate('/pending-goals');
    }).catch(() => {
      toast.error('Não foi possível deletar meta completada.');
    });;

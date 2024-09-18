@@ -38,7 +38,7 @@ export function CreateGoal() {
     await createGoal(data).then(() => {
       toast.success('Meta criada com sucesso.');
       mutate('/summary');
-      mutate('/pending-goals')
+      mutate('/pending-goals');
     }).catch(() => {
       toast.error('Não foi possível criar sua meta.');
     });
