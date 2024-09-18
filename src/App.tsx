@@ -5,8 +5,20 @@ import { Dialog } from "./components/ui/dialog";
 import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
 import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
 
 export function App() {
+  useEffect(() => {
+    console.log('Eu to aquiiii');
+
+    async function teste() {
+      const result = await getSummary("/summary");
+
+      console.log(result);
+    }
+
+    teste();
+  }, [])
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
 
@@ -28,6 +40,6 @@ export function App() {
   console.log({data, isLoading, error});
 
   return (
-  <h1></h1>
+   <h1>sdsdsdsdssd</h1>
   );
 }

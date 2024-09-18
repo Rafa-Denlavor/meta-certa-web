@@ -1,8 +1,9 @@
 import type { TSummary } from "../types/TSummary";
 
 export async function getSummary(url: string): Promise<TSummary> {
-  const response = await fetch(`http://localhost:3333${url}`);
+  console.log('Entrei no fetch');
+  const response = await fetch(`https://goals-back.vercel.app${url}`);
   const data = await response.json();
 
-  return data.summary[0];
+  return data?.summary?.[0];
 }
