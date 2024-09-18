@@ -5,9 +5,11 @@ import { Dialog } from "./components/ui/dialog";
 import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
 import { Toaster } from 'react-hot-toast';
-import { useEffect } from 'react';
+import { CookiesProvider, useCookies } from 'react-cookie'
 
 export function App() {
+  const [cookies, setCookie] = useCookies(['user'])
+
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
 
@@ -27,10 +29,15 @@ export function App() {
   }
 
   return (
-    <Dialog>
-     <Toaster position="bottom-left" />
-     {(error || !summary.total) && <EmptyGoals />}
-     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-    </Dialog>
+    <CookiesProvider>
+    {/*{cookies.user ?*/}
+      <div>
+        <Dialog>
+         <Toaster position="bottom-left" />
+         {(error || !summary.total) && <EmptyGoals />}
+         {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+        </Dialog>
+      </div>
+    </CookiesProvider>
   );
 }
