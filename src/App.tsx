@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 
 export function App() {
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
+    console.log('Eu entreeeeeei!');
     const result = await getSummary(url);
 
     return result;
@@ -25,13 +26,16 @@ export function App() {
     );
   }
 
+  console.log({data, isLoading, error});
+
   return (
     <div>
       <h1>Será que vai funcionar?</h1>
+      <Dialog>
        <h1>Será que vai funcionar? - 2</h1>
-       <Toaster position="bottom-left" />
        {(error || !summary.total) && <EmptyGoals />}
        {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+      </Dialog>
     </div>
   );
 }
