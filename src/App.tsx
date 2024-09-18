@@ -28,13 +28,6 @@ export function App() {
   console.log({data, isLoading, error});
 
   return (
-    <div>
-      <h1>Será que vai funcionar?</h1>
-      <Dialog>
-       <h1>Será que vai funcionar? - 2</h1>
-       {(error || !summary.total) && <EmptyGoals />}
-       {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-      </Dialog>
-    </div>
+  <h1></h1>
   );
 }
