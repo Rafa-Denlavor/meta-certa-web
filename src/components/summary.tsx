@@ -10,7 +10,6 @@ import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals';
 import { CreateGoal } from './create-goal';
 import { WeekGoals } from './week-goals';
-import 'dayjs/locale/pt-br';
 
 type TSummaryProps = {
   summaryData: TSummary;
