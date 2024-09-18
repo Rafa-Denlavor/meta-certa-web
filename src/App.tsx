@@ -6,9 +6,10 @@ import { getSummary } from "./service/get-summary";
 import { Logo } from "./components/ui/logo";
 import { Toaster } from 'react-hot-toast';
 
+console.log('TO NO APP');
+
 export function App() {
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
-    console.log('Eu entreeeeeei!');
     const result = await getSummary(url);
 
     return result;
