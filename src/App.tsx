@@ -8,17 +8,6 @@ import { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 
 export function App() {
-  useEffect(() => {
-    console.log('Eu to aquiiii');
-
-    async function teste() {
-      const result = await getSummary("/summary");
-
-      console.log('useEffect', result);
-    }
-
-    teste();
-  }, [])
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
 
@@ -42,6 +31,10 @@ export function App() {
   console.log({data, isLoading, error});
 
   return (
-   <h1>sdsdsdsdssd</h1>
+    <Dialog>
+     <Toaster position="bottom-left" />
+     {(error || !summary.total) && <EmptyGoals />}
+     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+    </Dialog>
   );
 }
