@@ -11,8 +11,6 @@ export function App() {
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
 
-      console.log('swr', result);
-
     return result;
   }, {
     revalidateOnFocus: false,
@@ -28,14 +26,11 @@ export function App() {
     );
   }
 
-  console.log({data, isLoading, error});
-
   return (
-    <h1>Ta tudo bem</h1>
-    // <Dialog>
-    //  <Toaster position="bottom-left" />
-    //  {(error || !summary.total) && <EmptyGoals />}
-    //  // {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
-    // </Dialog>
+    <Dialog>
+     <Toaster position="bottom-left" />
+     {(error || !summary.total) && <EmptyGoals />}
+     {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
+    </Dialog>
   );
 }

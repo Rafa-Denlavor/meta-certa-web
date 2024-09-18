@@ -5,7 +5,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
 
 dayjs.locale(ptBR);
 

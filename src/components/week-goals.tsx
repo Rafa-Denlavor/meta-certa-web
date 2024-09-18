@@ -1,9 +1,9 @@
 import { CheckCircle2 } from "lucide-react";
 import { DialogTrigger, Dialog } from "./ui/dialog";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-BR';
+import ptBR from 'dayjs/locale/pt-br';
 // import { DetailsGoal } from './details-goal'
-import 'dayjs/locale/pt-BR';
+import 'dayjs/locale/pt-br';
 import type { TGoal } from '../types/TGoal';
 
 type TWeekGoals = {

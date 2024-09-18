@@ -6,11 +6,11 @@ import { Separator } from "./ui/separator";
 import type { TSummary } from "../types/TSummary";
 import { Loader } from "./ui/loader";
 import dayjs from 'dayjs';
-import ptBR from 'dayjs/locale/pt-BR'
+import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals';
 import { CreateGoal } from './create-goal';
 import { WeekGoals } from './week-goals';
-import 'dayjs/locale/pt-BR';
+import 'dayjs/locale/pt-br';
 
 type TSummaryProps = {
   summaryData: TSummary;
