@@ -2,6 +2,17 @@
 
 Sua proposta é disponibilizar o gerenciamento de suas metas de forma fácil e simples.
 
+## Tecnologias Utilizadas
+
+- **Linguagem:** TypeScript
+- **Estilização**: Tailwind CSS
+- **Hospedagem**: Vercel
+- **Servidor de desenvolvimento**: Vite.js
+- **Biblioteca:** React.js
+- **Validação:** Zod
+- **Chamadas HTTP:** Fetch API
+- **Linter**: Biome
+
 ## Próximas funcionalidades
 
 - [ ] Ao cadastrar uma nova meta, adicionar a opção de manter ou fechar o modal assim que uma nova meta for adicionada.
