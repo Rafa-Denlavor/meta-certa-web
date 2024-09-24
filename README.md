@@ -12,3 +12,8 @@ Sua proposta é disponibilizar o gerenciamento de suas metas de forma fácil e s
 - [ ] Disponibilizar a ação de deletar uma ou todas as metas;
 - [ ] Disponibilizar a ação de editar uma meta;
 - [x] Adicionar quantas vezes ainda falta para completar a meta
+- [x] Tela de Login
+- [ ] Tela de cadastro
+- [ ] Utilizar axios pra criar uma instância
+- [ ] Criar função toast com efeito darkmode e reutilizá-la
+- [ ] A partir do authorization, salvar os dados no usuário correto

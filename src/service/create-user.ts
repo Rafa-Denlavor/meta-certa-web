@@ -6,11 +6,15 @@ type TCreateUser = {
 }
 
 export async function createUser(userInfo : TCreateUser) {
-   await fetch(`${'https://goals-back.vercel.app'}/create-user`, {
+   const response = await fetch(`${'https://goals-back.vercel.app'}/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(userInfo)
   })
+
+  const result = await response.text();
+
+  return JSON.parse(result);
 }

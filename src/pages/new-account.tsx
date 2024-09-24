@@ -7,41 +7,51 @@ import { useForm, Controller } from 'react-hook-form';
 import z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUser } from '../service/create-user';
+import { useCookies } from 'react-cookie'
+import { Toaster } from 'react-hot-toast';
 
-const createUserSchema = z.object({
+const newAccountSchema = z.object({
   email: z.string().email("Formato de email inválido"),
   username: z.string()
-    .min(3, "Username must be at least 3 characters long")
-    .max(20, "Username must be at most 20 characters long"),
+    .min(3, "Mínimo de 3 caracteres")
+    .max(30, "Máximo de 30 caracteres"),
   name: z.string()
     .min(1, "Nome é obrigatório"),
   password: z.string()
-    .min(8, "Password must be at least 8 characters long")
-    .max(100, "Password must be at most 100 characters long"),
+    .min(8, "Senha fraca! Mínimo de 8 caracteres")
+    .max(100, "Senha muito longa! Máximo de 100 caracteres"),
 });
 
-type CreateUserForm = z.infer<typeof createUserSchema>;
-
-async function handleCreateGoal(data: any) {
-  console.log(data);
-
-  // await createUser(data).then(() => {
-  //   toast.success('Conta criada com sucesso!');
-  // }).catch(() => {
-  //   toast.error('Não foi possível criar sua conta. Tente mais tarde!');
-  // });
-  //
-  // reset();
-}
+type CreateUserForm = z.infer<typeof newAccountSchema>;
 
 export function NewAccountPage() {
-  const { register, control, handleSubmit, formState, reset } = useForm<CreateUserForm>({
-    resolver: zodResolver(createUserSchema)
+  const [cookies, setCookie, removeCookie] = useCookies(['gltoken'], {
+    doNotParse: true,
   });
+  const { register, control, handleSubmit, formState, reset } = useForm<CreateUserForm>({
+    resolver: zodResolver(newAccountSchema)
+  });
+
+  if(cookies.gltoken) {
+    return window.location.replace('/');
+  }
+
+  async function handleNewAccount(data: CreateUserForm) {
+    await createUser(data).then(() => {
+      toast.success('Conta criada com sucesso!');
+
+      return window.location.replace('/login');
+    }).catch(() => {
+      toast.error('Não foi possível criar sua conta. Tente mais tarde!');
+    });
+
+    reset();
+  }
 
   return (
   <section className="flex align-center h-screen">
-    <form action="" onSubmit={() => {}} className="flex flex-col align-center w-[480px] m-auto rounded-md border-2 border-gray-700 p-6">
+    <Toaster position="bottom-left"/>
+    <form action="" method="POST" onSubmit={handleSubmit(handleNewAccount)} className="flex flex-col align-center w-[480px] m-auto rounded-md border-2 border-gray-700 p-6">
       <div className="flex justify-center gap-3 mb-8">
         <Logo />
         <h1 className="text-4xl text-center">Criar conta</h1>
