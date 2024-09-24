@@ -1,14 +1,15 @@
+import "./index.css";
 import { CookiesProvider } from 'react-cookie'
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { LoginPage } from './pages/login';
 import { NewAccountPage } from './pages/new-account';
 import { App } from "./App.tsx";
-import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import { FallbackPage } from "./pages/fallback.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <CookiesProvider>
-      <RouterProvider router={router} />
+      <RouterProvider fallbackElement={<FallbackPage />} router={router} />
     </CookiesProvider>
   </StrictMode>
 );
