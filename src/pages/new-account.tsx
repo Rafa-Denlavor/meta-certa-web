@@ -24,7 +24,7 @@ const newAccountSchema = z.object({
 
 type CreateUserForm = z.infer<typeof newAccountSchema>;
 
-export function NewAccountPage() {
+export function NewAccountPage() : any {
   const [cookies, setCookie, removeCookie] = useCookies(['gltoken'], {
     doNotParse: true,
   });

@@ -7,9 +7,7 @@ import { App } from "./App.tsx";
 import "./index.css";
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
+  RouterProvider
 } from "react-router-dom";
 
 const router = createBrowserRouter([
