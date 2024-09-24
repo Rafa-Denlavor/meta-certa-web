@@ -1,5 +1,7 @@
 ## Goals Front
 
+Sua proposta é disponibilizar o gerenciamento de suas metas de forma fácil e simples.
+
 ## Próximas funcionalidades
 
 - [ ] Ao cadastrar uma nova meta, adicionar a opção de manter ou fechar o modal assim que uma nova meta for adicionada.
