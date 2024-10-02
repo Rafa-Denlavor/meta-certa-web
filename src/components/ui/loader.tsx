@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import * as RadixLoader from "@radix-ui/react-progress";
 
 const loader = tv({
-  base: "flex items-center justify-center rounded-full animate-spin",
+  base: "flex items-center justify-center rounded-full animate-spin w-fitcontent",
   variants: {
     variant: {
       primary: "text-violet-500",

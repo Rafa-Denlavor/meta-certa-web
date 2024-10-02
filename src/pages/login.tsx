@@ -7,28 +7,37 @@ import { useForm } from "react-hook-form";
 import { login } from "../service/login";
 import { Toaster } from "react-hot-toast";
 import { useCookies } from "react-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type TLogin = {
   username: string;
   password: string;
 };
 
+enum ButtonStatus {
+  DEFAULT = 'DEFAULT',
+  PENDING = 'PENDING',
+  FAIL = 'FAIL',
+  DONE = 'DONE',
+}
+
 export function LoginPage(): any {
   const [cookies, setCookie] = useCookies(["gltoken"], {
     doNotParse: true,
   });
 
-  if (cookies.gltoken) {
-    return window.location.replace("/");
-  }
+  useEffect(() => {
+    if (cookies.gltoken) {
+      return window.location.replace("/");
+    }
+  }, []);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState(ButtonStatus.DEFAULT);
   const [passwordIsVisible, setPasswordIsVisible] = useState(true);
   const { register, handleSubmit, formState, reset } = useForm<TLogin>({});
 
   async function handleLogin(data: any): Promise<void> {
-    setIsLoading(true);
+    setButtonStatus(ButtonStatus.PENDING);
 
     await login(data)
       .then((data) => {
@@ -52,12 +61,13 @@ export function LoginPage(): any {
       })
       .catch(() => {
         reset();
+        setButtonStatus(ButtonStatus.FAIL);
 
         return toast.error(
           "Não foi possível autenticar seus dados. Tente novamente!"
         );
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => setButtonStatus(ButtonStatus.DONE));
   }
 
   return (
@@ -122,8 +132,11 @@ export function LoginPage(): any {
           Novo no Goals? Crie uma conta agora!
         </a>
         <footer className="flex items-center gap-3 mt-8">
-          <Button type="submit" className="flex-1" disabled={isLoading}>
-            Entrar no Goals
+          <Button type="submit" className="flex-1" disabled={buttonStatus === ButtonStatus.PENDING}>
+            {buttonStatus === ButtonStatus.DEFAULT && 'Entrar no Goals'}
+            {buttonStatus === ButtonStatus.PENDING && 'Carregando...'}
+            {buttonStatus === ButtonStatus.DONE && 'Sucesso!'}
+            {buttonStatus === ButtonStatus.ERROR && 'Hey, tente novamente entrar no Goals'}
           </Button>
         </footer>
       </form>

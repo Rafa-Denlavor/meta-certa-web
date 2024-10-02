@@ -8,14 +8,27 @@ import { Toaster } from 'react-hot-toast';
 import { useCookies } from 'react-cookie'
 import { LoginPage } from './pages/login';
 import { getGl } from './utils/getGl';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Header } from './components/ui/header';
+import { getUser } from "./service/get-user";
 
 export function App() : any {
   const [cookies, setCookie] = useCookies(['gltoken']);
+  const [userinfo, setUserinfo] = useState({});
 
-  if(!cookies.gltoken) {
-    return window.location.replace('/login');
-  }
+  useEffect(() => {
+    if(!cookies?.gltoken) {
+      window.location.replace('/login');
+    }
+
+    async function teste() {
+      await getUser().then((data) => {
+        setUserinfo(data)
+      })
+    }
+
+    teste();
+  }, [cookies.gltoken])
 
   const { data, isLoading, error } = useSWR("/summary", async (url) => {
     const result = await getSummary(url);
@@ -39,6 +52,7 @@ export function App() : any {
   return (
     <Dialog>
      <Toaster position="bottom-left" />
+     <Header user={userinfo}/>
      {(error || !summary.total) && <EmptyGoals />}
      {(!error && summary.total > 0) && <Summary summaryData={summary} isLoading={isLoading} hasError={error} />}
     </Dialog>

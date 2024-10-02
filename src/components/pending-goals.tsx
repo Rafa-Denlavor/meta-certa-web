@@ -19,7 +19,7 @@ export function PendingGoals() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen w-screen">
+      <div className="m-auto">
         <Loader />
       </div>
     );

@@ -32,7 +32,6 @@ export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
     <section className="py-10 max-w-[480px] px-5 mx-auto flex flex-col gap-6">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="Logo Goals" />
           <span className="text-lg font-semibold">
             <span title={firstMonth} className="capitalize">{firstDayOfWeek}</span>
             {' a '}
