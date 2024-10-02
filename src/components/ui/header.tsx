@@ -22,7 +22,7 @@ export function Header({ user } : any) {
         <Logo />
         <h1 className="font-bold text-2xl">Meta Certa</h1>
       </header>
-      <p className="italic">"{user.motivationalPhrase ?? userFallback.motivationalPhrase}</p>
+      {/*<p className="italic">"{user.motivationalPhrase ?? userFallback.motivationalPhrase}</p>*/}
       <footer className="flex gap-4">
         <Avatar image={user.avatar ?? userFallback.avatar}/>
         <DropdownMenu user={user} />

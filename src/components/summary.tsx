@@ -6,7 +6,7 @@ import { Separator } from "./ui/separator";
 import type { TSummary } from "../types/TSummary";
 import { Loader } from "./ui/loader";
 import dayjs from 'dayjs';
-// import ptBR from 'dayjs/locale/pt-br'
+import ptBR from 'dayjs/locale/pt-br'
 import { PendingGoals } from './pending-goals';
 import { CreateGoal } from './create-goal';
 import { WeekGoals } from './week-goals';
@@ -17,19 +17,20 @@ type TSummaryProps = {
   hasError?: boolean;
 };
 
-// dayjs.locale(ptBR);
+dayjs.locale(ptBR);
 
 export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
   const completedPorcentage =
     (summaryData?.completed / summaryData?.total) * 100;
 
-  const firstDayOfWeek = dayjs().startOf('week').format('D MMM')
-  const lastDayOfWeek = dayjs().endOf('week').format('D MMM');
+  const firstDayOfWeek = dayjs().startOf('week').format('D MMMM')
+  const lastDayOfWeek = dayjs().endOf('week').format('D MMMM');
   const firstMonth = dayjs().startOf('week').format('MMMM');
   const lastMonth = dayjs().endOf('week').format('MMMM');
 
   return (
     <section className="py-10 max-w-[480px] px-5 mx-auto flex flex-col gap-6">
+      <h2 className="text-2xl font-bold">Semana atual</h2>
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="text-lg font-semibold">
