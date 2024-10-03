@@ -136,7 +136,7 @@ export function LoginPage(): any {
             {buttonStatus === ButtonStatus.DEFAULT && 'Entrar no Goals'}
             {buttonStatus === ButtonStatus.PENDING && 'Carregando...'}
             {buttonStatus === ButtonStatus.DONE && 'Sucesso!'}
-            {buttonStatus === ButtonStatus.ERROR && 'Hey, tente novamente entrar no Goals'}
+            {buttonStatus === ButtonStatus.FAIL && 'Hey, tente novamente entrar no Goals'}
           </Button>
         </footer>
       </form>

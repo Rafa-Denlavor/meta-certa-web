@@ -7,7 +7,7 @@ import {
   ChevronRightIcon,
 } from '@radix-ui/react-icons';
 
-export function DropdownMenu({user}) {
+export function DropdownMenu({user} : any) {
   const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
   const [urlsChecked, setUrlsChecked] = React.useState(false);
   const [person, setPerson] = React.useState('pedro');

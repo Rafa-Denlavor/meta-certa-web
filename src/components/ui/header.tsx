@@ -1,4 +1,4 @@
-import { Avatar } from './Avatar';
+import { Avatar } from './avatar';
 import { DropdownMenu } from './dropdown-menu';
 import { Logo } from './logo';
 
@@ -14,8 +14,6 @@ const userFallback = {
 };
 
 export function Header({ user } : any) {
-  console.log(user);
-
   return (
     <header className="flex items-center justify-between m-auto px-[100px] py-7">
       <header className="flex gap-4 items-center">
