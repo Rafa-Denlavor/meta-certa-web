@@ -1,30 +1,58 @@
-## Goals Front
+# **Meta Certa**  
+**Descrição curta**:  Gerenciamento de metas semanais.
 
-Sua proposta é disponibilizar o gerenciamento de suas metas de forma fácil e simples.
+![Capa mostrando imagens polaroides com o logo do PolarizeMe](public/logo.svg)
 
-## Tecnologias Utilizadas
+## 🚀 **Visão Geral**
+Website em que é possível criar metas semanais e gerencí-alas concluindo ou deletando as etapa. Contém um histórico com as etapas e a conclusão da meta.
 
-- **Linguagem:** TypeScript
-- **Estilização**: Tailwind CSS
-- **Hospedagem**: Vercel
-- **Servidor de desenvolvimento**: Vite.js
-- **Biblioteca:** React.js
-- **Validação:** Zod
-- **Chamadas HTTP:** Fetch API
-- **Linter**: Biome
+## 🔧 **Tecnologias Utilizadas**
+- React.js
+- Vite.js
+- Tailwind CSS
+- Vercel
+- Radix UI
 
-## Próximas funcionalidades
+## 📂 **Estrutura do Projeto**
+```
+  raiz/
+  ├── src/                     # Código-fonte principal
+  ├──── components/           # Componentes de UI reutilizáveis
+  ├──── service/              # Chamadas HTTP
+  ├──── pages/                # Todas as páginas do site
+  ├──── types/                # Tipagens reutilizáveis
+  ├──── utils/                # Métodos úteis para a aplicação
+  ├── public/                  # Recursos visuais ou outros assets              
+  └── README.md                # Esse arquivo
+```
 
-- [ ] Ao cadastrar uma nova meta, adicionar a opção de manter ou fechar o modal assim que uma nova meta for adicionada.
-- [x] Disponibilizar modal para visualizar a descrição de cada meta.
-- [ ] Criar uma tela inicial para apresentar a proposta do site
-- [ ] Melhorar as descrições das imagens (SEO)
-- [ ] Identificar locais em que tooltips são úteis
-- [ ] Disponibilizar a ação de deletar uma ou todas as metas;
-- [ ] Disponibilizar a ação de editar uma meta;
-- [x] Adicionar quantas vezes ainda falta para completar a meta
-- [x] Tela de Login
-- [ ] Tela de cadastro
-- [ ] Utilizar axios pra criar uma instância
-- [ ] Criar função toast com efeito darkmode e reutilizá-la
-- [ ] A partir do authorization, salvar os dados no usuário correto
+## ⚙️ **Instalação e Configuração**
+### Pré-requisitos
+- Node.js v20
+- NPM.js v10
+
+### Passo a passo para rodar o projeto:
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Rafa-Denlavor/meta-certa-web.git
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor local:
+   ```bash
+   npm run dev
+   ```
+
+<!-- ## 🧪 **Testes**
+Para rodar os testes, execute:
+```bash
+npm test
+```
+-->
+
+## 📞 **Contato**
+Tem perguntas? Entre em contato com a gente:
+- **Email**: rafinhacrisdenlavor@gmail.com
+- **Site**: [https://denlavor.vercel.app)
