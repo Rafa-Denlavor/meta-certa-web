@@ -17,7 +17,7 @@ type TSummaryProps = {
   hasError?: boolean;
 };
 
-dayjs.locale(ptBR);
+//dayjs.locale(ptBR);
 
 export function Summary({ summaryData, isLoading, hasError }: TSummaryProps) {
   const completedPorcentage =
